@@ -8,8 +8,8 @@ const app = express();
 
 app.use(
   cors({
-    // origin: process.env.ALLOWED_ORIGINS?.split(",") || "http://localhost:3000",
-    origin: process.env.ALLOWED_ORIGINS,
+    origin: process.env.ALLOWED_ORIGINS?.split(","),
+    // origin: process.env.ALLOWED_ORIGINS,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization", "x-Chat-UUID"],
     // allowedHeaders: ["*"],
