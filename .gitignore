@@ -2,6 +2,7 @@
 # folders
 data/
 data-img/
+Test/
 
 # Environment variables
 .env
