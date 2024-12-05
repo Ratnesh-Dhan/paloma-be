@@ -16,7 +16,7 @@ router.post("/", async (req, res) => {
     let chatengine;
     const uuid = req.headers["x-chat-uuid"];
     console.log({ uuid });
-    console.log(req.headers)
+    // console.log(req.headers)
     if (!uuid) {
         res.status(400).send("UUID is required in header");
         return;
@@ -31,9 +31,9 @@ router.post("/", async (req, res) => {
             console.log("ChatEngine initialized");
         }
         const query = req.body.query;
-        console.log({ query });
+        // console.log({ query });
         const response = await chatengine.chat({ message: query });
-        console.log({ response });
+        console.log({sourceNodes: response.sourceNodes} );
         res.status(200).send(response);
     } catch (error) {
         console.log(error);
