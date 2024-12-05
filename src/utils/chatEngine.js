@@ -21,7 +21,22 @@ const chatEngine = async () => {
     const chatEngine = new ContextChatEngine({ 
         retriever,
         contextRole: 'system',
-        systemPrompt: 'you are a filesystem assistant, your job is to help the user with their filesystem questions.If there are text in hindi language then just give it as it is. ',
+        systemPrompt: `You are a knowledgeable filesystem assistant designed to help users with their filesystem queries , which you will find in the index.
+                    - if something is listable, list it.
+                    - if you are asked something which is not in the index, then dont give sources or sourceNodes.
+                    
+                    `,
+        // systemPrompt: `You are an assistant specifically trained to answer questions based on the indexed document content.
+
+        //             Your responsibilities:
+        //             - Only provide information that exists within the indexed documents
+        //             - If information isn't found in the documents, clearly state that
+        //             - Keep any Hindi text exactly as it appears in the documents
+        //             - Stay faithful to the source material without making assumptions
+        //             - When quoting from documents, indicate the source if available
+        //             - If a question is unclear, ask for clarification rather than making assumptions
+
+        //             Remember: Your knowledge is limited to the content of the indexed documents.`,
         chatModel: new OpenAI({
             apiKey: process.env.OPENAI_API_KEY,
             model: "gpt-4",
